@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-    <link rel="shortcut icon" href="./4geeks.ico" />
+    <title>Domain Name Generator</title>
+    <script>
+      const pronouns = ["my", "your", "our"];
+      const adjectives = ["great", "awesome", "amazing"];
+      const nouns = ["blog", "website", "store"];
+
+      function generateDomainNames(pronouns, adjectives, nouns) {
+        const domainNames = [];
+
+        for (const pronoun of pronouns) {
+          for (const adjective of adjectives) {
+            for (const noun of nouns) {
+              domainNames.push(`${pronoun}${adjective}${noun}.com`);
+            }
+          }
+        }
+
+        return domainNames;
+      }
+
+      const domainNames = generateDomainNames(pronouns, adjectives, nouns);
+    </script>
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
-    </div>
+    <ul id="domain-names"></ul>
+    <script>
+      const list = document.getElementById("domain-names");
+
+      for (const domainName of domainNames) {
+        const listItem = document.createElement("li");
+        listItem.textContent = domainName;
+        list.appendChild(listItem);
+      }
+    </script>
   </body>
 </html>
